@@ -36,17 +36,17 @@ function Navbar(props) {
             </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/about">
+            <a className="nav-link" href="./About.js">
               {props.About}
             </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/services">
+            <a className="nav-link" href="./Services.js">
               {props.Services}
             </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/contact">
+            <a className="nav-link" href="./Contact.js">
               Contact
             </a>
           </li>
@@ -56,16 +56,5 @@ function Navbar(props) {
   );
 }
 
-// Navbar.propTypes = {
-//   title: PropTypes.string.isRequired,
-//   About: PropTypes.string.isRequired,
-//   Services: PropTypes.string.isRequired,
-// };
-
-// Navbar.defaultProps = {
-//  title: 'GrowFarmer',
-//  About :'About GrowIndustries ',
-//   Services: 'Our Services', 
-// };
 
 export default Navbar;

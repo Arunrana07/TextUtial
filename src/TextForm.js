@@ -32,7 +32,7 @@ function TextForm(props) {
           value={text}
           onChange={handleOnChange}
           style={{
-            height: "500px",
+            height: "350px",
             backgroundColor: props.mode === "dark" ? "#184a7cff" : "white",
             color: props.mode === "dark" ? "white" : "black",
           }}

@@ -61,7 +61,7 @@ const buttonStyles = {
         <Alert alert={alert} />
         <div className="container mx-auto mt-4">
           <TextForm mode={mode} />
-          {/* <About mode={mode}/> */}
+          <About mode={mode}/>
           <Services mode={mode} />
           <Contact mode={mode} />
           {/* <Routes>

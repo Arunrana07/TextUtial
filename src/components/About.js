@@ -1,46 +1,22 @@
-// import React, { useState } from "react";
+import React from 'react'
 
-// function About() {
-//   const [myStyle, setMyStyle] = useState({
-//     color: "black",
-//     backgroundColor: "white",
-//     border : "2px solid white"
-//   });
-//   const [btnText, setBtnText] = useState("Enable Dark Mode");
+function About() {
+  return (
+    <div>
+        <section className="w-full py-16 px-6 bg-gray-50" id="about">
+<div className="max-w-5xl mx-auto text-center">
+<h2 className="text-4xl font-bold mb-4">About Us</h2>
+<p className="text-gray-600 text-lg leading-relaxed">
+We are a modern web service provider focused on creating fast,
+responsive and user-friendly websites. Our goal is to bring your
+ideas to life with clean design, powerful features, and smooth
+performance.
+</p>
+</div>
+</section>
 
-//   const toggleStyle = () => {
-//     if (myStyle.color === "black") {
-//       setMyStyle({
-//         color: "white",
-//         backgroundColor: "black",
-//       });
-//       setBtnText("Enable light Mode")
-//     } else {
-//       setMyStyle({
-//         color: "black",
-//         backgroundColor: "white",
-//       });
-//       setBtnText("Enable dark Mode");
-//     }
-//   };
+    </div>
+  )
+}
 
-//   return (
-//     <div className="Container" style={myStyle}>
-//       <h2>About Us</h2>
-//       <p>
-//         Welcome to GrowFarmer! We are dedicated to providing fresh, high-quality
-//         agricultural products directly from the farm to your table. Our mission
-//         is to support farmers, promote sustainable farming, and deliver healthy
-//         produce to our customers.
-//       </p>
-
-//       <div className="container">
-//         <button className="btn btn-primary mx-2" onClick={toggleStyle}>
-//           {btnText}
-//         </button>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default About;
+export default About
