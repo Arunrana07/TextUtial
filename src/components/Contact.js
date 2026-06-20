@@ -1,45 +1,37 @@
-import React from 'react'
+import React from "react";
 
-function Contact() {
+function Contact({ mode }) {
+  const handleSubmit = (event) => event.preventDefault();
+
   return (
-    <div>
-        <section className="w-full py-16 px-6 bg-gray-50" id="contact">
-<div className="max-w-xl mx-auto text-center">
-<h2 className="text-4xl font-bold mb-6">Contact Us</h2>
-<form className="flex flex-col gap-4 text-left">
-<input
-type="text"
-placeholder="Your Name"
-className="p-3 rounded-xl border border-gray-300 focus:ring focus:ring-blue-300"
-/>
+    <section className={`page-shell ${mode === "dark" ? "page-dark" : ""}`}>
+      <div className="contact-layout">
+        <div className="contact-copy">
+          <span className="eyebrow">GET IN TOUCH</span>
+          <h1>Let’s build something great together.</h1>
+          <p>Have an idea or a question? Send us a message and we’ll get back to you soon.</p>
+          <div className="contact-detail">
+            <span>✉</span>
+            <div><small>Email us</small><strong>hello@textutials.com</strong></div>
+          </div>
+          <div className="contact-detail">
+            <span>⌖</span>
+            <div><small>Location</small><strong>India</strong></div>
+          </div>
+        </div>
 
-
-<input
-type="email"
-placeholder="Your Email"
-className="p-3 rounded-xl border border-gray-300 focus:ring focus:ring-blue-300"
-/>
-
-
-<textarea
-placeholder="Your Message"
-rows="4"
-className="p-3 rounded-xl border border-gray-300 focus:ring focus:ring-blue-300"
-></textarea>
-
-
-<button
-type="submit"
-className="bg-blue-600 text-white py-3 rounded-xl hover:bg-blue-700 transition"
->
-Send Message
-</button>
-</form>
-</div>
-</section>
-
-    </div>
-  )
+        <form className="contact-form" onSubmit={handleSubmit}>
+          <div className="field-row">
+            <label>Name<input type="text" placeholder="Your name" required /></label>
+            <label>Email<input type="email" placeholder="you@example.com" required /></label>
+          </div>
+          <label>Subject<input type="text" placeholder="How can we help?" /></label>
+          <label>Message<textarea placeholder="Tell us a little about your project..." rows="5" required /></label>
+          <button type="submit" className="primary-button">Send message <span>→</span></button>
+        </form>
+      </div>
+    </section>
+  );
 }
 
-export default Contact
+export default Contact;

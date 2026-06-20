@@ -1,100 +1,51 @@
 import React, { useState } from "react";
 
-function TextForm(props) {
+function TextForm({ mode }) {
   const [text, setText] = useState("");
+  const words = text.trim() ? text.trim().split(/\s+/).length : 0;
 
-  const handleUpClick = () => setText(text.toUpperCase());
-  const handleLoClick = () => setText(text.toLowerCase());
-  const handleCleClick = () => setText("");
-  const handleCopyText = () => {
-    navigator.clipboard.writeText(text);
-    alert("Text Copied!");
+  const copyText = async () => {
+    await navigator.clipboard.writeText(text);
   };
-  const handleRemoveSpace = () => {
-    let newText = text.split(/\s+/).join(" ").trim();
-    setText(newText);
-  };
-  const handleOnChange = (event) => setText(event.target.value);
 
   return (
-    <div>
-      <div
-        className="form-floating"
-        style={{
-          backgroundColor: props.mode === "dark" ? "#0c1b25ff" : "white",
-          color: props.mode === "dark" ? "white" : "black",
-        }}
-      >
-        <h3>{props.Heading}</h3>
+    <main className={`page-shell home-page ${mode === "dark" ? "page-dark" : ""}`}>
+      <div className="home-intro">
+        <span className="eyebrow">SMART TEXT TOOL</span>
+        <h1>Transform your text in seconds.</h1>
+        <p>Format, clean and analyse your writing with a simple tool made for everyday work.</p>
+      </div>
+
+      <section className="editor-card">
+        <div className="editor-topbar">
+          <div><span className="status-dot"></span> Text editor</div>
+          <span>{words} words&nbsp; · &nbsp;{text.length} characters</span>
+        </div>
         <textarea
-          className="form-control"
-          placeholder="Leave a comment here"
           value={text}
-          onChange={handleOnChange}
-          style={{
-            height: "350px",
-            backgroundColor: props.mode === "dark" ? "#184a7cff" : "white",
-            color: props.mode === "dark" ? "white" : "black",
-          }}
-          id="floatingTextarea2"
-        ></textarea>
-      </div>
+          onChange={(event) => setText(event.target.value)}
+          placeholder="Start typing or paste your text here..."
+        />
+        <div className="editor-actions">
+          <button onClick={() => setText(text.toUpperCase())} disabled={!text}>UPPERCASE</button>
+          <button onClick={() => setText(text.toLowerCase())} disabled={!text}>lowercase</button>
+          <button onClick={() => setText(text.trim().split(/\s+/).join(" "))} disabled={!text}>Remove spaces</button>
+          <button onClick={copyText} disabled={!text}>Copy text</button>
+          <button className="clear-button" onClick={() => setText("")} disabled={!text}>Clear</button>
+        </div>
+      </section>
 
-      <div className="container1 mb-5">
-        <button
-          styles={props.buttonStyles}
-          onClick={handleUpClick}
-        >
-          Convert to Uppercase
-        </button>
+      <section className="summary-grid">
+        <article><strong>{words}</strong><span>Words</span></article>
+        <article><strong>{text.length}</strong><span>Characters</span></article>
+        <article><strong>{(words * 0.008).toFixed(2)}</strong><span>Minutes read</span></article>
+      </section>
 
-        <button
-          style={props.buttonStyles}
-          onClick={handleLoClick}
-        >
-          Convert to Lowercase
-        </button>
-
-        <button
-          style={props.buttonStyles}
-          onClick={handleCleClick}
-        >
-          Clear Text
-        </button>
-
-        <button
-          style={props.buttonStyles}
-          onClick={handleCopyText}
-        >
-          Copy Text
-        </button>
-
-        <button
-          style={props.buttonStyles}
-          onClick={handleRemoveSpace}
-        >
-          Remove Extra Spaces
-        </button>
-      </div>
-
-      <div className="container">
-        <h2>Your Text Summary and convert into any case you want</h2>
-        <p>
-          {text.split(/\s+/).filter((word) => word !== "").length} words and{" "}
-          {text.length} characters
-        </p>
-        <p>
-          {text.split(/\s+/).filter((word) => word !== "").length * 0.008}{" "}
-          Minutes read
-        </p>
+      <section className="preview-card">
         <h2>Preview</h2>
-        <p>
-          {text.length > 0
-            ? text
-            : "Enter something in the above textbox to preview it here"}
-        </p>
-      </div>
-    </div>
+        <p className={!text ? "placeholder-copy" : ""}>{text || "Your text preview will appear here."}</p>
+      </section>
+    </main>
   );
 }
 

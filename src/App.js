@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { useState } from "react";
-// import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/navbar"; // Fixed: lowercase 'navbar' to match file name
 import TextForm from "./TextForm";
 import About from "./components/About";
@@ -49,7 +49,7 @@ const buttonStyles = {
 
 
   return (
-    // <BrowserRouter>
+    <HashRouter>
       <div>
         <Navbar
           mode={mode}
@@ -60,20 +60,18 @@ const buttonStyles = {
         />
         <Alert alert={alert} />
         <div className="container mx-auto mt-4">
-          <TextForm mode={mode} />
-          <About mode={mode}/>
-          <Services mode={mode} />
-          <Contact mode={mode} />
-          {/* <Routes>
-          
-            <Route path="/" element={<TextForm mode={mode} />} />
+          <Routes>
+            <Route
+              path="/"
+              element={<TextForm mode={mode} buttonStyles={buttonStyles} />}
+            />
             <Route path="/about" element={<About mode={mode} />} />
             <Route path="/services" element={<Services mode={mode} />} />
             <Route path="/contact" element={<Contact mode={mode} />} />
-          </Routes> */}
+          </Routes>
         </div>
       </div>
-    // </BrowserRouter>
+    </HashRouter>
   );
 }
 
