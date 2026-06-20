@@ -1,19 +1,12 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 function Navbar(props) {
   return (
-    <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode} px-4`}>
-      <a className="navbar-brand" href="/">
+    <nav className={`navbar navbar-${props.mode} bg-${props.mode} px-4`}>
+      <NavLink className="navbar-brand" to="/">
         {props.title}
-      </a>
-      <button
-        className="navbar-toggler"
-        type="buthrefn"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNav"
-      >
-        <span className="navbar-toggler-icon"></span>
-      </button>
+      </NavLink>
       <div className={`form-check form-switch text-${props.mode ==='light' ? "dark": "light" }`}>
   <input
     className="form-check-input"
@@ -28,27 +21,27 @@ function Navbar(props) {
   </label>
 </div>
 
-      <div className="collapse navbar-collapse" id="navbarNav">
-        <ul className="navbar-nav ms-auto">
+      <div className="d-flex ms-auto">
+        <ul className="navbar-nav flex-row gap-3">
           <li className="nav-item">
-            <a className="nav-link active" href="/">
+            <NavLink className="nav-link" to="/">
               Home
-            </a>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="./About.js">
+            <NavLink className="nav-link" to="/about">
               {props.About}
-            </a>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="./Services.js">
+            <NavLink className="nav-link" to="/services">
               {props.Services}
-            </a>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="./Contact.js">
+            <NavLink className="nav-link" to="/contact">
               Contact
-            </a>
+            </NavLink>
           </li>
         </ul>
       </div>

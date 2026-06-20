@@ -1,38 +1,41 @@
-import React from 'react'
+import React from "react";
 
-function Services() {
-
+function Services({ mode }) {
   const services = [
     {
+      icon: "</>",
       title: "Web Development",
-      desc: "Build responsive and optimized websites using the latest technologies.",
+      desc: "Fast, responsive and scalable websites built with modern technologies.",
     },
     {
+      icon: "✦",
       title: "UI/UX Design",
-      desc: "Design clean, modern and user-friendly interfaces for apps and websites.",
+      desc: "Clean and intuitive interfaces that make every interaction feel effortless.",
     },
     {
+      icon: "↗",
       title: "SEO Optimization",
-      desc: "Improve ranking, speed, and visibility of your website on search engines.",
+      desc: "Better speed, visibility and search rankings to help your business grow.",
     },
   ];
 
   return (
-    <section className="w-full py-16 px-6 bg-white" id="services">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold text-center mb-10">Our Services</h2>
+    <section className={`page-shell ${mode === "dark" ? "page-dark" : ""}`}>
+      <div className="page-heading">
+        <span className="eyebrow">WHAT WE DO</span>
+        <h1>Services built around your ideas</h1>
+        <p>From the first sketch to the final launch, we create digital experiences that look good and work beautifully.</p>
+      </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {services.map((s, index) => (
-            <div
-              key={index}
-              className="p-6 bg-gray-50 rounded-2xl shadow hover:shadow-lg transition"
-            >
-              <h3 className="text-2xl font-semibold mb-3">{s.title}</h3>
-              <p className="text-gray-600">{s.desc}</p>
-            </div>
-          ))}
-        </div>
+      <div className="services-grid">
+        {services.map((service) => (
+          <article className="service-card" key={service.title}>
+            <span className="service-icon">{service.icon}</span>
+            <h2>{service.title}</h2>
+            <p>{service.desc}</p>
+            <span className="learn-more">Learn more →</span>
+          </article>
+        ))}
       </div>
     </section>
   );
