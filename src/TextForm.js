@@ -78,7 +78,7 @@ function TextForm(props) {
       </div>
 
       <div className="container">
-        <h2>Your Text Summary</h2>
+        <h2>Your Text Summary and convert into any case you want</h2>
         <p>
           {text.split(/\s+/).filter((word) => word !== "").length} words and{" "}
           {text.length} characters
